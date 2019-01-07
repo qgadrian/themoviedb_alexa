@@ -36,6 +36,7 @@ defmodule ThemoviedbAlexa.MixProject do
 
   def aliases do
     [
+      compile: ["compile --warnings-as-errors"],
       build_lambda: "gen_lambda_release",
       package: ["release", "bootstrap", "zip"]
     ]
