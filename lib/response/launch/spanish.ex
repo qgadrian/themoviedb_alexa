@@ -1,5 +1,5 @@
 defmodule ThemoviedbAlexa.Response.Launch.Spanish do
-  @module """
+  @moduledoc """
   Module to build an spanish response for an Alexa skill launch request
   """
 

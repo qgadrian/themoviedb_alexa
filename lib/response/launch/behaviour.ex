@@ -1,5 +1,5 @@
 defmodule ThemoviedbAlexa.Response.Launch.Behaviour do
-  @module """
+  @moduledoc """
   Module that defines the response behaviour for a launch request
   """
 
