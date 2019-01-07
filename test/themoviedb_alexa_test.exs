@@ -4,6 +4,8 @@ defmodule ThemoviedbAlexaTest do
 
   import Mox
 
+  alias Themoviedb.MovieInfo
+
   @context_request %{}
 
   @launch_request %{
@@ -98,8 +100,17 @@ defmodule ThemoviedbAlexaTest do
         }
       }
 
-      expect(ThemoviedbAlexa.Themoviedb.ClientMock, :rating, fn movie_name ->
-        {:ok, movie_name, movie_rating}
+      :themoviedb_alexa
+      |> Application.get_env(:tmdb_client)
+      |> expect(:rating, fn movie_name ->
+        {
+          :ok,
+          %MovieInfo{
+            name: movie_name,
+            rating: movie_rating,
+            release_date: Date.utc_today()
+          }
+        }
       end)
 
       assert expected_response ==

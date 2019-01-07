@@ -3,13 +3,15 @@ defmodule ThemoviedbAlexa.Response.Rating.Spanish do
   Module that provides an Alexa response to an intent in the spanish.
   """
 
-  @behaviour ThemoviedbAlexa.Response.Behaviour
+  alias Themoviedb.MovieInfo
+
+  @behaviour ThemoviedbAlexa.Response.Rating.Behaviour
 
   @doc """
   Returns an Alexa skill response with the rating info of a movie
   """
-  @spec response_movie_rating(String.t(), non_neg_integer) :: map
-  def response_movie_rating(movie_name, movie_rating) do
+  @spec response_movie_rating(MovieInfo.t()) :: map
+  def response_movie_rating(%MovieInfo{} = movie_info) do
     %{
       "version" => "1.0",
       # "sessionAttributes" => %{
@@ -18,7 +20,7 @@ defmodule ThemoviedbAlexa.Response.Rating.Spanish do
       "response" => %{
         "outputSpeech" => %{
           "type" => "PlainText",
-          "text" => "La nota de #{movie_name} es #{movie_rating}",
+          "text" => "La nota de #{movie_info.name} es #{movie_info.rating}",
           "playBehavior" => "REPLACE_ENQUEUED"
         },
         # "reprompt": {

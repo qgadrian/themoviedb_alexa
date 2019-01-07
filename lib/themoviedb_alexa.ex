@@ -19,11 +19,8 @@ defmodule ThemoviedbAlexa do
     handle_request(request)
   end
 
-  @doc """
-  Handles a lambda request and delegates the Alexa response to each locale supported
-  """
   @spec handle_request(map) :: map
-  defp handle_request(request = %{"intent" => intent = %{"name" => "CheckRatingIntent"}}) do
+  defp handle_request(request = %{"intent" => %{"name" => "CheckRatingIntent"}}) do
     MovieRating.handle_request(request)
   end
 

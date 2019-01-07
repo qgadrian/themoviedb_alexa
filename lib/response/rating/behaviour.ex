@@ -4,5 +4,5 @@ defmodule ThemoviedbAlexa.Response.Rating.Behaviour do
   """
   @type movie_rating :: map
 
-  @callback response_movie_rating(String.t(), non_neg_integer) :: movie_rating
+  @callback response_movie_rating(Themoviedb.MovieInfo) :: movie_rating
 end

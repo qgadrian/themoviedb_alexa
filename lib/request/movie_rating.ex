@@ -7,8 +7,6 @@ defmodule ThemoviedbAlexa.Request.MovieRating do
 
   alias Themoviedb.Response.Spanish
 
-  @tmdb_client Application.get_env(:themoviedb_alexa, :tmdb_client)
-
   @intent_name "CheckRatingIntent"
   @slot_movie_name "movie_name"
 
@@ -24,11 +22,14 @@ defmodule ThemoviedbAlexa.Request.MovieRating do
       Logger.info(fn -> "Language request | #{locale}" end)
       Logger.info(fn -> "Rating request | #{movie_name}" end)
 
-      {:ok, movie_name, movie_rating} = @tmdb_client.rating(movie_name)
+      {:ok, movie_info} =
+        :themoviedb_alexa
+        |> Application.get_env(:tmdb_client)
+        |> Kernel.apply(:rating, [movie_name])
 
       case locale do
         "es-ES" ->
-          Spanish.response_movie_rating(movie_name, movie_rating)
+          Spanish.response_movie_rating(movie_info)
       end
     end
   end
