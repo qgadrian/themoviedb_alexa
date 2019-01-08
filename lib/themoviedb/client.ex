@@ -22,21 +22,12 @@ defmodule ThemoviedbAlexa.Themoviedb.Client do
       [movie | []] ->
         Logger.debug(inspect(movie))
 
-        {:ok, release_date} = movie |> Map.get("release_date") |> Date.from_iso8601!()
-
-        {
-          :ok,
-          %MovieInfo{
-            name: movie_name,
-            release_date: release_date,
-            rating: Map.get(movie, "vote_average")
-          }
-        }
+        {:ok, MovieInfo.from_tmdb(movie)}
 
       movies ->
         Logger.info("Multiple movies | #{movie_name}")
-        movie = List.first(movies)
-        {:ok, movie_name, Map.get(movie, "vote_average")}
+
+        {:ok, MovieInfo.from_tmdb(movies)}
     end
   end
 end
