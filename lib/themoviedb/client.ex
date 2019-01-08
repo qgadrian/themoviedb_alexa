@@ -5,12 +5,15 @@ defmodule ThemoviedbAlexa.Themoviedb.Client do
   require Logger
 
   alias Themoviedb.MovieInfo
+  alias ThemoviedbAlexa.Session
 
   @behaviour ThemoviedbAlexa.Themoviedb.Client.Behaviour
 
   @impl true
   def rating(movie_name) do
-    %{"results" => movies} = Tmdb.Search.movies(movie_name)
+    language = Session.language(RequestSession)
+
+    %{"results" => movies} = Tmdb.Search.movies(movie_name, %{language: language})
 
     case movies do
       [] ->

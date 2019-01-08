@@ -16,7 +16,9 @@ defmodule ThemoviedbAlexa do
     Logger.debug(inspect(lambda_request))
     Logger.debug(inspect(lambda_context))
 
-    handle_request(request)
+    request
+    |> start_session()
+    |> handle_request()
   end
 
   @spec handle_request(map) :: map
@@ -30,5 +32,15 @@ defmodule ThemoviedbAlexa do
 
   def themoviedb_handler(request) do
     Logger.error(inspect(request))
+  end
+
+  defp start_session(request) do
+    locale = Map.get(request, "locale")
+
+    ThemoviedbAlexa.Session.start_link(name: RequestSession)
+
+    ThemoviedbAlexa.Session.language(RequestSession, locale)
+
+    request
   end
 end
