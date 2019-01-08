@@ -27,10 +27,15 @@ defmodule ThemoviedbAlexa.Request.MovieRating do
         |> Application.get_env(:tmdb_client)
         |> Kernel.apply(:rating, [movie_name])
 
-      case locale do
-        "es-ES" ->
-          Spanish.response_movie_rating(movie_info)
-      end
+      response =
+        case locale do
+          "es-ES" ->
+            Spanish.response_movie_rating(movie_info)
+        end
+
+      Logger.debug(inspect(response))
+
+      response
     end
   end
 end
