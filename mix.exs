@@ -29,7 +29,7 @@ defmodule ThemoviedbAlexa.MixProject do
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
       {:aws_lambda_elixir_runtime, "~> 0.1.0", only: [:lambda]},
       {:distillery, "~> 2.0"},
-      {:tmdb, git: "https://github.com/seanabrahams/elixir-tmdb.git"},
+      {:tmdb, git: "git@github.com:qgadrian/elixir-tmdb.git"},
       {:mox, "~> 0.4", only: :test}
     ]
   end
