@@ -56,7 +56,7 @@ create_lambda: ## Creates an AWS lambda
 	@aws lambda create-function \
 		--region ${AWS_REGION} \
 		--function-name ${LAMBDA_NAME} \
-		--handler Elixir.ThemoviedbAlexa:themoviedb_handler \
+		--handler Elixir.ThemoviedbAlexa:handle \
 		--role ${ROLE_ARN} \
 		--runtime provided \
 		--zip-file fileb://${LAMBDA_PATH}
