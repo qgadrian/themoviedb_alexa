@@ -113,8 +113,7 @@ defmodule ThemoviedbAlexaTest do
         }
       end)
 
-      assert expected_response ==
-               ThemoviedbAlexa.themoviedb_handler(@movie_rating_request, @context_request)
+      assert expected_response == ThemoviedbAlexa.handle(@movie_rating_request, @context_request)
     end
 
     test "when it provides a launch request then a launch response is provided" do
@@ -130,8 +129,7 @@ defmodule ThemoviedbAlexaTest do
         }
       }
 
-      assert expected_response ==
-               ThemoviedbAlexa.themoviedb_handler(@launch_request, @context_request)
+      assert expected_response == ThemoviedbAlexa.handle(@launch_request, @context_request)
     end
   end
 end

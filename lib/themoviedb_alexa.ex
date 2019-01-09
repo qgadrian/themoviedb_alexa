@@ -9,7 +9,7 @@ defmodule ThemoviedbAlexa do
   @doc """
   Entrypoint of the lambda function
   """
-  def handler(
+  def handle(
         lambda_request = %{"request" => request},
         lambda_context
       ) do
