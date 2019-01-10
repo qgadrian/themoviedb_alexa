@@ -5,7 +5,7 @@ defmodule ThemoviedbAlexa.Session do
 
   use GenServer
 
-  def start_link(opts) do
+  def start_link(opts \\ []) do
     GenServer.start_link(__MODULE__, %{}, opts)
   end
 
