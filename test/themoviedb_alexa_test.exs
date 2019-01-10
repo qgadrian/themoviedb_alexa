@@ -107,6 +107,8 @@ defmodule ThemoviedbAlexaTest do
           :ok,
           %MovieInfo{
             name: movie_name,
+            title: movie_name,
+            language: "en",
             rating: movie_rating,
             release_date: Date.utc_today()
           }

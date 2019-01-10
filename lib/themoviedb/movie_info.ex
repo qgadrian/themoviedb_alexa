@@ -8,7 +8,8 @@ defmodule Themoviedb.MovieInfo do
           related_movies: list(__MODULE__.t())
         }
 
-  defstruct [:name, :title, :language, :rating, :release_date, related_movies: []]
+  @enforce_keys [:name, :title, :language, :rating, :release_date]
+  defstruct @enforce_keys ++ [related_movies: []]
 
   @spec from_tmdb(list(map)) :: __MODULE__.t()
   def from_tmdb(tmdb_movies) when is_list(tmdb_movies) do
