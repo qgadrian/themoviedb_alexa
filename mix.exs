@@ -9,6 +9,7 @@ defmodule ThemoviedbAlexa.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       aliases: aliases(),
+      elixirc_paths: elixirc_paths(Mix.env()),
       preferred_cli_env: [
         build_lambda: :lambda,
         package: :lambda
@@ -23,6 +24,9 @@ defmodule ThemoviedbAlexa.MixProject do
     ]
   end
 
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
@@ -30,7 +34,8 @@ defmodule ThemoviedbAlexa.MixProject do
       {:aws_lambda_elixir_runtime, "~> 0.1.0", only: [:lambda]},
       {:distillery, "~> 2.0"},
       {:tmdb, git: "git@github.com:qgadrian/elixir-tmdb.git"},
-      {:mox, "~> 0.4", only: :test}
+      {:mox, "~> 0.4", only: :test},
+      {:stream_data, "~> 0.1", only: :test}
     ]
   end
 
