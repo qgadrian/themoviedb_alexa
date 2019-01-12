@@ -47,7 +47,7 @@ defmodule ThemoviedbAlexa.Response.Rating.Spanish do
           # "type" => "SSML",
           "type" => "PlainText",
           "text" =>
-            "La nota de #{movie_info.name} es #{movie_info.rating}, sin embargo he encontrado otras películas como #{
+            "La nota de #{movie_info.name} es #{movie_info.rating}, sin embargo es posible que estés buscando otras películas que he encontrado, por ejemplo #{
               other_movie_titles
             }",
           # "ssml" =>
